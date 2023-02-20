@@ -1,12 +1,27 @@
 class Venue
-  attr_reader :name, :capacity
+  attr_reader :name, :capacity, :patrons
 
   def initialize(name, capacity)
-  @name = name
-  @capacity = capacity
-  @patrons = []
+    @name = name
+    @capacity = capacity
+    @patrons = []
+  end
+
+  def add_patron(patron)
+    @patrons << patron
+  end
+
+  def yell_at_patrons
+    @patrons.map { |patron| patron.upcase }
+  end
+
+  def over_capacity?
+    if @patrons.length > @capacity
+      true
+    else
+      false
+    end
   end
 
 end
 
-#ven1 = Venue.new("Bluebird", 4, 0)
